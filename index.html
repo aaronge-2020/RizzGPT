@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charming Response Generator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Charming Response Generator</h1>
+        <p class="text-center">Get the perfect response for your dating app conversation!</p>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="fileInput">Upload Conversation Screenshot:</label>
+                <input type="file" id="fileInput" accept="image/*" class="form-control">
+                <button class="btn btn-primary mt-2" onclick="generateResponses()">Generate Responses</button>
+                <p id="status"></p>
+            </div>
+            <div class="col-md-6">
+                <div class="container border p-3 mb-3">
+                    <h3>Recognized Text:</h3>
+                    <p id="recognizedText"></p>
+                </div>
+                <div class="container border p-3">
+                    <h3>Charming Responses:</h3>
+                    <ul id="responses"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js"></script>
+    <script src="https://episphere.github.io/gpt/jonas/export.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
