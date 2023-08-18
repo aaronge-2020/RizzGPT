@@ -7,6 +7,23 @@
     <title>RizzGPT</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+        }
+
         .carousel-control-prev,
         .carousel-control-next {
             width: 5%;
@@ -22,22 +39,28 @@
         #bubblesCarousel .carousel-inner {
             max-height: 200px;
         }
+
+        .container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="header">
+        <h1>RizzGPT - Conversation Processor</h1>
+    </div>
+
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
                 <div class="text-center">
                     <img id="uploadedImage" src="" alt="Uploaded Conversation Screenshot" style="display: none; margin:auto; max-width: 50%;">
-
                     <label for="fileInput">Upload Conversation Screenshot:</label>
                     <input type="file" id="fileInput" accept="image/*" class="form-control w-75 mx-auto">
                     <button class="btn btn-primary mt-2" onclick="proceedToTranscript()">Process Image</button>
                 </div>
-               
                 <div id="transcriptCarousel" class="carousel slide mt-5" data-interval="false">
                     <div class="carousel-inner">
                         <!-- Existing Carousel -->
@@ -45,8 +68,7 @@
                             <div class="container border p-3 mb-3">
                                 <h3>Recognized Text:</h3>
                                 <textarea id="recognizedText" class="form-control" rows="10"></textarea>
-                                <button class="btn btn-primary mt-2" onclick="proceedToResponses()">Confirm
-                                    Transcript</button>
+                                <button class="btn btn-primary mt-2" onclick="proceedToResponses()">Confirm Transcript</button>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -70,6 +92,10 @@
             </div>
         </div>
         <canvas id="canvasOutput" style="display: none;"></canvas>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2023 RizzGPT. All rights reserved.</p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
