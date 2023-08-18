@@ -1,1 +1,1 @@
-[# RizzGPT](https://aaronge-2020.github.io/RizzGPT/)
+# [RizzGPT](https://aaronge-2020.github.io/RizzGPT/)
