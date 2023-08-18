@@ -1,38 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charming Response Generator</title>
+    <title>RizzGPT</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.3);
+            height: 50px;
+            width: 50px;
+        }
+
+        #bubblesCarousel .carousel-inner {
+            max-height: 200px;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Charming Response Generator</h1>
-        <p class="text-center">Get the perfect response for your dating app conversation!</p>
-        <div class="row">
-            <div class="col-md-6">
-                <label for="fileInput">Upload Conversation Screenshot:</label>
-                <input type="file" id="fileInput" accept="image/*" class="form-control">
-                <button class="btn btn-primary mt-2" onclick="generateResponses()">Generate Responses</button>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+
+                <div class="text-center">
+                    <img id="uploadedImage" src="" alt="Uploaded Conversation Screenshot" style="display: none; margin:auto; max-width: 50%;">
+
+                    <label for="fileInput">Upload Conversation Screenshot:</label>
+                    <input type="file" id="fileInput" accept="image/*" class="form-control w-75 mx-auto">
+                    <button class="btn btn-primary mt-2" onclick="proceedToTranscript()">Process Image</button>
+                </div>
+               
+                <div id="transcriptCarousel" class="carousel slide mt-5" data-interval="false">
+                    <div class="carousel-inner">
+                        <!-- Existing Carousel -->
+                        <div class="carousel-item active">
+                            <div class="container border p-3 mb-3">
+                                <h3>Recognized Text:</h3>
+                                <textarea id="recognizedText" class="form-control" rows="10"></textarea>
+                                <button class="btn btn-primary mt-2" onclick="proceedToResponses()">Confirm
+                                    Transcript</button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container border p-3">
+                                <h3>Responses:</h3>
+                                <ul id="responses"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carousel Controls -->
+                    <a class="carousel-control-prev" href="#transcriptCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#transcriptCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
                 <p id="status"></p>
             </div>
-            <div class="col-md-6">
-                <div class="container border p-3 mb-3">
-                    <h3>Recognized Text:</h3>
-                    <p id="recognizedText"></p>
-                </div>
-                <div class="container border p-3">
-                    <h3>Charming Responses:</h3>
-                    <ul id="responses"></ul>
-                </div>
-            </div>
         </div>
+        <canvas id="canvasOutput" style="display: none;"></canvas>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js"></script>
-    <script src="https://episphere.github.io/gpt/jonas/export.js"></script>
+    <script async src="https://docs.opencv.org/master/opencv.js" onload="" type="text/javascript"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
