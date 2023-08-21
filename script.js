@@ -1,3 +1,6 @@
+import { askChatGpt } from "./GPT.js";
+
+
 // Utility function to extract average color from an image
 function extractAverageColor(imageData) {
   const { data } = imageData;
@@ -131,7 +134,7 @@ async function proceedToTranscript() {
             ${fullText}
             `;
 
-        const response = await GPT.completions(prompt);
+        const response = await GPT.completions(prompt, 'gpt-3.5-turbo-16k-0613','user', 0);
 
         recognizedTextElement.value = response.choices[0].message.content;
 
@@ -160,14 +163,13 @@ async function proceedToResponses() {
   // Use GPT SDK to generate responses
   // Your GPT call code here, using the fullText variable
   // ...
-  const prompt = `You are a quick-witted and clever comedian, known for your ability to turn even the most mundane situations into a laugh riot. You've just matched with someone on a dating app, and the conversation is flowing, but it needs a spark of your signature humor. 
-  Here's the transcript of the conversation so far: 
-    ${fullText}
 
-    Now, channel your inner comedian and come up with 5 different punchline responses for the receiver that will leave the sender in stitches. Remember, the wittier, the better! Feel free to add a twist, exaggerate, or even create a fictional scenario. Let the humor flow!
-    `;
 
-  const response = await GPT.completions(prompt);
+
+  const response = await GPT.completions( 
+    `You are a confident and charismatic man who is known to be exceptionally good with women. As the receiver in the conversation, please generate five unique and creative funny responses to the last message of the following text message conversation. Use a conversational tone and avoid emojis and sounding corny or cheesy. Here's the transcript of the conversation so far
+    ${fullText}`
+    ,'gpt-3.5-turbo','user', 0);
   const responseText = document.createElement("pre");
   responseText.textContent = response.choices[0].message.content;
   responseList.appendChild(responseText);
