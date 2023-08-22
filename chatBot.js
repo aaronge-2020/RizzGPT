@@ -1,4 +1,4 @@
-import {openAIClient} from "https://cdn.jsdelivr.net/npm/openai@4.0.1/+esm";
+import * as openai from "https://cdn.jsdelivr.net/npm/openai@4.0.1/+esm";
 
 
 async function check4key(k){
@@ -55,6 +55,6 @@ async function askChatGpt(message, systemPrompt="You are a helpful assistant", m
     });
     
     return response.data.choices[0].message.content;
-  }
+}
 
   export{askChatGpt}
